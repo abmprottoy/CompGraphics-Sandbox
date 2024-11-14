@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLUT Application1", "GLUT Application1.vcxproj", "{8B26549B-964B-411E-A21C-F4DFDE831DAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Debug|x64.ActiveCfg = Debug|x64
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Debug|x64.Build.0 = Debug|x64
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Debug|x86.ActiveCfg = Debug|Win32
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Debug|x86.Build.0 = Debug|Win32
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Release|x64.ActiveCfg = Release|x64
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Release|x64.Build.0 = Release|x64
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Release|x86.ActiveCfg = Release|Win32
+		{8B26549B-964B-411E-A21C-F4DFDE831DAA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C90CF20E-5C5E-468E-BFE9-7E8A12CFFAB8}
+	EndGlobalSection
+EndGlobal
