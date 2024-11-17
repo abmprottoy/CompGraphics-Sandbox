@@ -128,7 +128,7 @@ void display() {
 
     // Draw the Polygon
 	glColor3f(1.0f, 1.0f, 0.0f);
-    glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
 	glVertex2f(0.60f, -0.40f);
     glVertex2f(0.52f, -0.39f);
     glVertex2f(0.50f, -0.32f);
@@ -137,8 +137,8 @@ void display() {
     glVertex2f(0.45f, -0.44f);
     glVertex2f(0.43f, -0.52f);
     glVertex2f(0.50f, -0.48f);
-    //glVertex2f(0.56f, -0.52f);
-    //glVertex2f(0.54f, -0.44f);
+    glVertex2f(0.56f, -0.52f);
+    glVertex2f(0.54f, -0.44f);
 	glEnd();
 
 
