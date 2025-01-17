@@ -40,7 +40,7 @@ namespace convertpixel
                     // Validate input
                     if (xPixel < 0 || xPixel >= width || yPixel < 0 || yPixel >= height)
                     {
-                        Console.WriteLine("Coordinates must be within the range of 0 to 499.");
+                        Console.WriteLine($"Coordinates must be within the range of 0 to {width} for width and 0 to {height} for height.");
                         continue;
                     }
 
