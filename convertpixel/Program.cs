@@ -9,7 +9,7 @@ namespace convertpixel
         {
             // Image dimensions
             int width = 1025;
-            int height = 577;
+            int height = 1025;
 
             string filePath = "NDC_Output.cpp";
 
