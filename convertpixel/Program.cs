@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace convertpixel
 {
@@ -11,8 +8,10 @@ namespace convertpixel
         static void Main(string[] args)
         {
             // Image dimensions
-            int width = 500;
-            int height = 500;
+            int width = 1025;
+            int height = 577;
+
+            string filePath = "NDC_Output.cpp";
 
             Console.WriteLine("Enter pixel coordinates (x, y) to convert to NDC (or type 'exit' to quit):");
 
@@ -23,6 +22,14 @@ namespace convertpixel
                     // Prompt for input
                     Console.Write("Enter x coordinate: ");
                     string xInput = Console.ReadLine();
+
+                    if (xInput.ToLower() == "next") 
+                    {
+                        File.AppendAllText(filePath, Environment.NewLine);
+                        Console.Write("Enter x coordinate: ");
+                        xInput = Console.ReadLine();
+                    }
+                        
 
                     if (xInput.ToLower() == "exit")
                         break;
@@ -50,10 +57,22 @@ namespace convertpixel
 
                     // Display result
                     Console.WriteLine($"NDC Coordinates: (x: {xNDC:F2}, y: {yNDC:F2})\n");
+                    string glVertex2fLine = $"glVertex2f({xNDC:F2}f, {yNDC:F2}f);";
+
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"{glVertex2fLine}\n");
+                    Console.ResetColor();
+
+                    // Save to file
+                    File.AppendAllText(filePath, glVertex2fLine + Environment.NewLine);
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("Invalid input. Please enter integer values.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             }
 
