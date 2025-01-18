@@ -5,84 +5,82 @@
 
 using namespace std;
 
- 
-vector<pair<float, float>> linePoints;
+vector<pair<int, int>> circlePoints;
+
+void storeSymmetricPoints(int xc, int yc, int x, int y) {
+    circlePoints.push_back({ xc + x, yc + y });
+    circlePoints.push_back({ xc - x, yc + y });
+    circlePoints.push_back({ xc + x, yc - y });
+    circlePoints.push_back({ xc - x, yc - y });
+    circlePoints.push_back({ xc + y, yc + x });
+    circlePoints.push_back({ xc - y, yc + x });
+    circlePoints.push_back({ xc + y, yc - x });
+    circlePoints.push_back({ xc - y, yc - x });
+}
 
 
-void calculateDDALine(int x1, int y1, int x2, int y2) {
+void calculateCirclePoints(int xc, int yc, int r) {
+    int x = 0, y = r;
+    int p = 1 - r;
 
-    int dx = x2 - x1;
-    int dy = y2 - y1;
+    storeSymmetricPoints(xc, yc, x, y);
 
-    int steps;
-    if (abs(dx) > abs(dy)) {
-        steps = abs(dx);
-    }
-    else {
-        steps = abs(dy);
-    }
-
-
-    float xIncrement = dx / (float)steps;
-    float yIncrement = dy / (float)steps;
-
-    // Initial point
-    float x = x1;
-    float y = y1;
-
-    // Store the first point
-    linePoints.push_back({ x, y });
-
-    // Calculate points and store them
-    for (int i = 0; i < steps; i++) {
-        x += xIncrement;
-        y += yIncrement;
-        linePoints.push_back({ x, y });
-        cout << "Point " << i + 1 << ": (" << x << ", " << y << ")" << endl;
+    while (x < y) {
+        x++;
+        if (p < 0) {
+            p += 2 * x + 1;
+        }
+        else {
+            y--;
+            p += 2 * (x - y) + 1;
+        }
+        storeSymmetricPoints(xc, yc, x, y);
     }
 }
 
 void display() {
-    glClearColor(0.0f, 0.48f, 0.8f, 0.0f); // Set the background color
-    glClear(GL_COLOR_BUFFER_BIT); // Clear the screen
-    glPointSize(10.0); // Set the point size to 10 pixels
-    glLineWidth(1.0); // Set the line width to 5 pixels
+    glClear(GL_COLOR_BUFFER_BIT);
+    glPointSize(2.0f);            
 
     glBegin(GL_POINTS);
-
     glColor3f(0.0f, 1.0f, 0.0f);
-    for (size_t i = 0; i < linePoints.size(); ++i) {
-        glVertex2f((float)(linePoints[i].first), (float)(linePoints[i].second));
-    }
-	glVertex2f(11.0f, 15.07f);
 
-    glEnd(); 
+    for (const auto& point : circlePoints) {
+        glVertex2f(point.first, point.second);
+    }
+
+    glEnd();
     glFlush(); 
 }
 
 int main(int argc, char** argv) {
-    int x1, y1, x2, y2;
-    cout << "Enter the coordinates of the two points : " << endl;
-    cout << "Value of x in first pair : ";
-    cin >> x1;
-    cout << "Value of y in first pair : ";
-    cin >> y1;
-    cout << "Value of x in second pair : ";
-    cin >> x2;
-    cout << "Value of y in second pair : ";
-    cin >> y2;
+    int xc, yc, r;
 
-    
-    calculateDDALine(x1, y1, x2, y2);
+    cout << "Enter the center of the circle (x, y) : ";
+    cin >> xc >> yc;
 
-    // Initialize GLUT and create window
+    cout << "Enter the radius of the circle : ";
+    cin >> r;
+
+    calculateCirclePoints(xc, yc, r);
+
+
+    cout << "Calculated Circle Points:\n";
+    for (const auto& point : circlePoints) {
+        cout << "(" << point.first << ", " << point.second << ")\n";
+    }
+
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(500, 500);
-    glutCreateWindow("DDA Line Drawing");
-    glutDisplayFunc(display); 
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Midpoint Circle Drawing");
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-    glutMainLoop(); 
+
+    glutDisplayFunc(display); 
+    glutMainLoop();           
 
     return 0;
 }
