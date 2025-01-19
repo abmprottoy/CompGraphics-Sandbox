@@ -149,6 +149,22 @@ void display() {
 
 	glEnd();
 
+	//Window
+    glColor3f(0.13f, 0.09f, 0.13f);
+	glBegin(GL_POLYGON);
+    glVertex2f(0.23f, -0.58f);
+    glVertex2f(0.27f, -0.58f);
+    glVertex2f(0.27f, -0.62f);
+    glVertex2f(0.22f, -0.62f);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+    glVertex2f(0.33f, -0.58f);
+    glVertex2f(0.33f, -0.62f);
+    glVertex2f(0.30f, -0.61f);
+    glVertex2f(0.30f, -0.58f);
+	glEnd();
+
     /// Tires
 	/// Front Tire
     
