@@ -13,3 +13,5 @@ Submitted by Group 06 :
 |MD. Ashfak Uzzaman Khan | 22-49976-3|
 
 for evaluation to Mahfujur Rahman sir on Fall 24-25 semester.
+
+Note: Copyrighted audio material is ommited from the repository. Use your own .wav files.
