@@ -22,6 +22,10 @@ GLfloat cloudSpeed = 0.0005f;      // Speed for all clouds
 
 GLfloat planeposition = 0.0f;
 GLfloat planespeed = 0.2f;
+int  back1=151,back2=247,back3=255,  star1=151,star2=247,star3=255;
+
+
+//int sky1=31,sky2=63,sky3=96 ;
 
 
 void River() {
@@ -161,7 +165,7 @@ void handleSpecialKeys(int key, int x, int y) {
     switch (key) {
         case GLUT_KEY_UP:
             speed = 0.1f;
-            moving = true;
+
             break;
         case GLUT_KEY_DOWN:
             speed = -0.1f;
@@ -169,12 +173,13 @@ void handleSpecialKeys(int key, int x, int y) {
             break;
         case GLUT_KEY_LEFT:
             speed = 0.0f;
-            moving = false;
+
             break;
         case GLUT_KEY_RIGHT:
             speed = 0.1f;
-            moving = true;
+
             break;
+
     }
     glutPostRedisplay();
 }
@@ -917,7 +922,7 @@ glPopMatrix();
     glVertex2f(-0.58f,0.5f);
     glVertex2f(-0.66f,0.5f);
 
-   glColor3ub(183, 237, 255); //------- light tower er sob light
+   glColor3ub(183, 237, 255); //------- light tower er sob light ------------ (183, 237, 255);-------------------------------------
 
 
     glVertex2f(-0.55f,0.44f);
@@ -1607,6 +1612,18 @@ void updatePlane(int value) {
     glutTimerFunc(200, updatePlane, 0);
 }
 
+void handleMouse(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON)
+	{
+		planespeed=1.0f;
+	}
+	if (button == GLUT_RIGHT_BUTTON)
+	{
+
+		planespeed=0.04f;
+	}
+	glutPostRedisplay();
+}
 
 
 void Plane() {
@@ -2089,7 +2106,7 @@ void display() {
 	glMatrixMode(GL_MODELVIEW);
 
 
-	glColor3ub(151,247,255);//..........sky
+	glColor3ub(back1,back2,back3); //glColor3ub(151,247,255);//..........sky
 	glBegin(GL_QUADS);
     glVertex2f(-1.0f,1.0f);
 	glVertex2f(-1.0f,-1.0f);
@@ -2098,12 +2115,111 @@ void display() {
 	glEnd();
 
 
-    glColor3ub(0,0,0);
+
+
+
+
+
+    glColor3ub(255,255,255);
     glLineWidth(8);
 	glBegin(GL_LINES);
     glVertex2f(-1.0f,-0.6f);
 	glVertex2f(1.0f,-0.6f);
 	glEnd();
+
+	glPointSize(2);
+    glBegin(GL_POINTS);
+	 glColor3ub(star1,star2,star3);//.................................star255,255,255
+
+    glVertex2f(-0.0f,0.79f);
+    glVertex2f(-0.0f,0.9f);
+    glVertex2f(-0.07f,0.9f);
+    glVertex2f(-0.07f,0.7f);
+    glVertex2f(-0.03f,0.75f);
+    glVertex2f(-0.03f,0.85f);
+    glVertex2f(-0.03f,0.95f);
+    glVertex2f(-0.13f,0.79f);
+    glVertex2f(-0.13f,0.9f);
+    glVertex2f(-0.23f,0.75f);
+    glVertex2f(-0.23f,0.85f);
+    glVertex2f(-0.33f,0.65f);
+    glVertex2f(-0.33f,0.785f);
+    glVertex2f(-0.33f,0.958f);
+    glVertex2f(-0.43f,0.55f);
+    glVertex2f(-0.43f,0.75f);
+    glVertex2f(-0.43f,0.89f);
+    glVertex2f(-0.55f,0.47f);
+    glVertex2f(-0.55f,0.67f);
+    glVertex2f(-0.55f,0.87f);
+    glVertex2f(-0.5f,0.42f);
+    glVertex2f(-0.58f,0.45f);
+    glVertex2f(-0.58f,0.65f);
+    glVertex2f(-0.58f,0.95f);
+    glVertex2f(-0.49f,0.51f);
+    glVertex2f(-0.63f,0.525f);
+    glVertex2f(-0.63f,0.725f);
+    glVertex2f(-0.63f,0.925f);
+    glVertex2f(-0.73f,0.425f);
+    glVertex2f(-0.73f,0.525f);
+    glVertex2f(-0.73f,0.725f);
+    glVertex2f(-0.83f,0.35f);
+    glVertex2f(-0.83f,0.46f);
+    glVertex2f(-0.83f,0.56f);
+    glVertex2f(-0.83f,0.76f);
+    glVertex2f(-0.83f,0.96f);
+    glVertex2f(-0.93f,0.485f);
+    glVertex2f(-0.93f,0.585f);
+    glVertex2f(-0.93f,0.785f);
+    glVertex2f(-0.98f,0.885f);
+    glVertex2f(-0.98f,0.285f);
+    glVertex2f(0.0f,0.79f);
+    glVertex2f(0.0f,0.9f);
+    glVertex2f(0.07f,0.9f);
+    glVertex2f(0.07f,0.7f);
+    glVertex2f(0.03f,0.75f);
+    glVertex2f(0.03f,0.85f);
+    glVertex2f(0.03f,0.95f);
+    glVertex2f(0.13f,0.79f);
+    glVertex2f(0.13f,0.9f);
+    glVertex2f(0.23f,0.75f);
+    glVertex2f(0.23f,0.85f);
+    glVertex2f(0.33f,0.65f);
+    glVertex2f(0.33f,0.785f);
+    glVertex2f(0.33f,0.958f);
+    glVertex2f(0.43f,0.55f);
+    glVertex2f(0.43f,0.75f);
+    glVertex2f(0.43f,0.89f);
+    glVertex2f(0.55f,0.47f);
+    glVertex2f(0.55f,0.67f);
+    glVertex2f(0.55f,0.87f);
+    glVertex2f(0.5f,0.42f);
+    glVertex2f(0.58f,0.45f);
+    glVertex2f(0.58f,0.65f);
+    glVertex2f(0.58f,0.95f);
+    glVertex2f(0.49f,0.51f);
+    glVertex2f(0.63f,0.525f);
+    glVertex2f(0.63f,0.725f);
+    glVertex2f(0.63f,0.925f);
+    glVertex2f(0.73f,0.425f);
+    glVertex2f(0.73f,0.525f);
+    glVertex2f(0.73f,0.725f);
+    glVertex2f(0.83f,0.35f);
+    glVertex2f(0.83f,0.46f);
+    glVertex2f(0.83f,0.56f);
+    glVertex2f(0.83f,0.76f);
+    glVertex2f(0.83f,0.96f);
+    glVertex2f(0.93f,0.485f);
+    glVertex2f(0.93f,0.585f);
+    glVertex2f(0.93f,0.785f);
+    glVertex2f(0.98f,0.885f);
+    glVertex2f(0.98f,0.285f);
+
+    glEnd();
+
+
+
+
+
 	Sun();
     Cloud();
     Plane();
@@ -2118,9 +2234,46 @@ glFlush();  // Render now
 
 }
 
+void handleKeypress(unsigned char key, int x, int y) {
+        switch (key) {
+
+    case 'd':
+star1=151;
+        star2=247;
+        star3=255;
+
+        back1=151;
+        back2=247;
+        back3=255;
+
+        break;
+
+        /*   sky1=166;
+        sky2=166;
+        sky3=166; */
+
+    case 'n':
+star1=255;
+        star2=255;
+        star3=255;
+
+        back1=38;
+        back2=77;
+        back3=115;
+        break;
+    glutPostRedisplay();
+    //starc1=255,skyc2=255,skyc3=255,sky1=31,sky2=63,sky3=96,back1=38,back2=77,back3=115
+   /* sky1=31;
+        sky2=63;
+        sky3=96; */
+	}}
 
 
-
+void myInit (void)
+{
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    gluOrtho2D(-1.0, 1.0, -1.0, 1.0);
+}
 
 int main(int argc, char** argv)
 {
@@ -2131,11 +2284,13 @@ int main(int argc, char** argv)
     glutCreateWindow ("Colourfull Neon City");
     glutDisplayFunc(display);
     init();
-    glutSpecialFunc(handleSpecialKeys);
+
     glutTimerFunc(100, updateBoat, 0);
     glutTimerFunc(16, updateClouds, 0); // Start the cloud movement animation
 glutTimerFunc(200, updatePlane, 0);
-
+ glutSpecialFunc(handleSpecialKeys);
+ glutKeyboardFunc(handleKeypress);
+glutMouseFunc(handleMouse);
     glutMainLoop();
     return 0;
 }
